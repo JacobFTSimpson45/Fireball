@@ -23,6 +23,8 @@ public class EnemyAI : MonoBehaviour
     //states
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
+    public float stunTimer;
+    public float stunLength = 2f;
 
     private void Awake()
     {
@@ -36,6 +38,11 @@ public class EnemyAI : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
+        if (stunTimer > 0)
+        {
+            stunTimer -= Time.deltaTime;
+            return;
+        }
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
@@ -43,8 +50,9 @@ public class EnemyAI : MonoBehaviour
 
     public void GetStunned()
     {
-        Debug.Log("Get Stunned Loser");
+        stunTimer += stunLength;
     }
+
     private void Patroling()
     {
         if (!walkPointSet) SearchWalkPoint();
