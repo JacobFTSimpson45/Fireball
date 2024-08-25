@@ -19,6 +19,9 @@ public class EnemyAI : MonoBehaviour
     //attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
+    public int attackDamage = 1;
+    public float attackChargeUpTimer;
+    public float attackChargeUpLength = 1f;
 
     //states
     public float sightRange, attackRange;
@@ -41,6 +44,7 @@ public class EnemyAI : MonoBehaviour
         if (stunTimer > 0)
         {
             stunTimer -= Time.deltaTime;
+            agent.SetDestination(transform.position);
             return;
         }
         if (!playerInSightRange && !playerInAttackRange) Patroling();
@@ -62,8 +66,7 @@ public class EnemyAI : MonoBehaviour
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
         //Walkpoint reched
-        if (distanceToWalkPoint.magnitude < 1f)
-            walkPointSet = false;
+        if (distanceToWalkPoint.magnitude < 1f) walkPointSet = false;
     }
 
     private void SearchWalkPoint()
@@ -88,13 +91,22 @@ public class EnemyAI : MonoBehaviour
         Vector3 playerPos = player.position;
         playerPos.y = transform.position.y;
 
-        Vector3 direction = transform.position - player.position;
-
         transform.LookAt(playerPos);
 
         if (!alreadyAttacked)
         {
-            //Attack code here
+            Collider[] colliders = Physics.OverlapSphere(transform.position, attackRange);
+            foreach (Collider col in colliders)
+            {
+                if (col.tag == "Player")
+                {
+                    Health hp = col.gameObject.GetComponent<Health>();
+                    if (hp != null)
+                    {
+                        hp.health -= attackDamage;
+                    }
+                }
+            }
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
