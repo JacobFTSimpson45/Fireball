@@ -1684,9 +1684,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5137d731e984046b27bbb2d9f73cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectsHit: 0
+  objectsDestroyed: 0
   currentHealth: 0
-  currentTime: 60
+  radius: 50
+  currentTime: 0
   uiManager: {fileID: 2042169499}
 --- !u!1 &1375858471
 GameObject:
