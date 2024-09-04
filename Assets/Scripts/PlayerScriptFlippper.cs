@@ -13,7 +13,7 @@ public class PlayerScriptFlippper : MonoBehaviour
         GetComponent<PlayerLookAtMouse>().enabled = false;
         FireballSpawnPoint.GetComponent<PlayerShoot>().enabled = false;
         GetComponent<PlayerDash>().enabled = true;
-        GetComponent<PlayerAbilityStun>().enabled = false;
+        GetComponent<PlayerAbilityStun>().enabled = true;
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class PlayerScriptFlippper : MonoBehaviour
             GetComponent<PlayerLookAtMouse>().enabled = true;
             FireballSpawnPoint.GetComponent<PlayerShoot>().enabled = true;
             GetComponent<PlayerDash>().enabled = false;
-            GetComponent<PlayerAbilityStun>().enabled = true;
+            GetComponent<PlayerAbilityStun>().enabled = false;
         }
         if (Input.GetKeyUp(KeyCode.Mouse1))
         {
@@ -33,7 +33,7 @@ public class PlayerScriptFlippper : MonoBehaviour
             GetComponent<PlayerLookAtMouse>().enabled = false;
             FireballSpawnPoint.GetComponent<PlayerShoot>().enabled = false;
             GetComponent<PlayerDash>().enabled = true;
-            GetComponent<PlayerAbilityStun>().enabled = false;
+            GetComponent<PlayerAbilityStun>().enabled = true;
         }
     }
 }
