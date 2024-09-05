@@ -5,9 +5,25 @@ using TMPro;
 using System;
 public class UiManager : MonoBehaviour
 {
+    [SerializeField] GameObject deathPanel;
+    [SerializeField] GameObject player;
     public TextMeshProUGUI timerUIText;
     public TextMeshProUGUI scoreUIText;
     public TextMeshProUGUI healthUIText;
+
+    private void Start()
+    {
+        deathPanel.SetActive(false);
+    }
+    void Update()
+    {
+       Health playerHP = player.GetComponent<Health>();
+        if (playerHP.health <= 0)
+        {
+            deathPanel.SetActive(true);
+            gameObject.SetActive(false);
+        }
+    }
 
     public void UpdateTimer(float timerAmount)
     {
