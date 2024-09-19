@@ -28,6 +28,8 @@ public class EnemyAI : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
     public float stunTimer;
     public float stunLength = 2f;
+    public float waitTimer;
+    public float waitLength = 2f;
 
     private void Awake()
     {
@@ -56,7 +58,6 @@ public class EnemyAI : MonoBehaviour
     {
         stunTimer += stunLength;
     }
-
     private void Patroling()
     {
         if (!walkPointSet) SearchWalkPoint();
@@ -65,8 +66,17 @@ public class EnemyAI : MonoBehaviour
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
-        //Walkpoint reched
-        if (distanceToWalkPoint.magnitude < 1f) walkPointSet = false;
+        //Walkpoint reached
+        if (distanceToWalkPoint.magnitude < 1f)
+        {
+            if (waitTimer > 0)
+            {
+                waitTimer -= Time.deltaTime;
+                return;
+            }
+            waitTimer += waitLength;
+            walkPointSet = false;
+        }
     }
 
     private void SearchWalkPoint()
