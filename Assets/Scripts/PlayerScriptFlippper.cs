@@ -6,34 +6,48 @@ public class PlayerScriptFlippper : MonoBehaviour
 {
     public GameObject FireballSpawnPoint;
 
+    PlayerMovement playerMovement;
+    PlayerLookAtMouse playerLookAtMouse;
+    PlayerShoot playerShoot;
+    PlayerDash playerDash;
+    PlayerAbilityStun playerAbilityStun;
+
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<PlayerMovement>().enabled = true;
-        GetComponent<PlayerLookAtMouse>().enabled = false;
-        FireballSpawnPoint.GetComponent<PlayerShoot>().enabled = false;
-        GetComponent<PlayerDash>().enabled = true;
-        GetComponent<PlayerAbilityStun>().enabled = true;
+        playerMovement = GetComponent<PlayerMovement>();
+        playerLookAtMouse = GetComponent<PlayerLookAtMouse>();
+        playerShoot = FireballSpawnPoint.GetComponent<PlayerShoot>();
+        playerDash = GetComponent<PlayerDash>();
+        playerAbilityStun = GetComponent<PlayerAbilityStun>();
+
+        playerMovement.enabled = true;
+        playerLookAtMouse.enabled = false;
+        playerDash.enabled = true;
+        playerAbilityStun.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse1))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
-            GetComponent<PlayerMovement>().enabled = false;
-            GetComponent<PlayerLookAtMouse>().enabled = true;
-            FireballSpawnPoint.GetComponent<PlayerShoot>().enabled = true;
-            GetComponent<PlayerDash>().enabled = false;
-            GetComponent<PlayerAbilityStun>().enabled = false;
+            playerShoot.ChargeFireball();
+
+            playerMovement.enabled = false;
+            playerLookAtMouse.enabled = true;
+            playerDash.enabled = false;
+            playerAbilityStun.enabled = false;
+
         }
-        if (Input.GetKeyUp(KeyCode.Mouse1))
+        if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            GetComponent<PlayerMovement>().enabled = true;
-            GetComponent<PlayerLookAtMouse>().enabled = false;
-            FireballSpawnPoint.GetComponent<PlayerShoot>().enabled = false;
-            GetComponent<PlayerDash>().enabled = true;
-            GetComponent<PlayerAbilityStun>().enabled = true;
+            playerShoot.ShootFireball();
+
+            playerMovement.enabled = true;
+            playerLookAtMouse.enabled = false;
+            playerDash.enabled = true;
+            playerAbilityStun.enabled = true;
         }
     }
 }

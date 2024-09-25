@@ -926,6 +926,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Spawn Point (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 597071503202154025, guid: 0dc6f174563787d4c8601ef4eab2f458,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 730310751722578940, guid: 0dc6f174563787d4c8601ef4eab2f458,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1357,7 +1362,7 @@ MonoBehaviour:
   fireballChargingPrefab: {fileID: 843900552555861260, guid: b49634c8536f8ff4f945c47c683d409e,
     type: 3}
   ChargeTimeMultiplier: 10
-  ChargeUpTime: 0
+  chargeUpTime: 0
 --- !u!1 &929343796
 GameObject:
   m_ObjectHideFlags: 0
@@ -2495,6 +2500,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Spawn Point (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 597071503202154025, guid: 0dc6f174563787d4c8601ef4eab2f458,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 730310751722578940, guid: 0dc6f174563787d4c8601ef4eab2f458,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2706,6 +2716,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy Spawn Point (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 597071503202154025, guid: 0dc6f174563787d4c8601ef4eab2f458,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 730310751722578940, guid: 0dc6f174563787d4c8601ef4eab2f458,
         type: 3}
@@ -3158,6 +3173,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy Spawn Point
+      objectReference: {fileID: 0}
+    - target: {fileID: 597071503202154025, guid: 0dc6f174563787d4c8601ef4eab2f458,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 730310751722578940, guid: 0dc6f174563787d4c8601ef4eab2f458,
         type: 3}
