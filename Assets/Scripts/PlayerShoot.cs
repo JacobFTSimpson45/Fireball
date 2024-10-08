@@ -20,7 +20,7 @@ public class PlayerShoot : MonoBehaviour
     {
         if (isCharging)
         {
-            chargeUpTime += Time.deltaTime * ChargeTimeMultiplier; // build up charge to increase launch force of fireball with multiplier to increase time
+            chargeUpTime += Time.deltaTime * ChargeTimeMultiplier; // build up charge to increase launch force of fireball with multiplier to increase time  
         }
     }
 

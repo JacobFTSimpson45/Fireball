@@ -6,6 +6,9 @@ public class PlayerScriptFlippper : MonoBehaviour
 {
     public GameObject FireballSpawnPoint;
 
+    public GameObject wizard;
+    Animator animator;
+
     PlayerMovement playerMovement;
     PlayerLookAtMouse playerLookAtMouse;
     PlayerShoot playerShoot;
@@ -15,6 +18,8 @@ public class PlayerScriptFlippper : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = wizard.GetComponent<Animator>();
+
         playerMovement = GetComponent<PlayerMovement>();
         playerLookAtMouse = GetComponent<PlayerLookAtMouse>();
         playerShoot = FireballSpawnPoint.GetComponent<PlayerShoot>();
@@ -34,6 +39,8 @@ public class PlayerScriptFlippper : MonoBehaviour
         {
             playerShoot.ChargeFireball();
 
+            animator.SetBool("isCharging", true);
+
             playerMovement.enabled = false;
             playerLookAtMouse.enabled = true;
             playerDash.enabled = false;
@@ -43,6 +50,8 @@ public class PlayerScriptFlippper : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             playerShoot.ShootFireball();
+
+            animator.SetBool("isCharging", false);
 
             playerMovement.enabled = true;
             playerLookAtMouse.enabled = false;

@@ -8,19 +8,29 @@ public class PlayerMovement : MonoBehaviour
     Vector3 forward;
     Vector3 right;
 
+    public GameObject wizard;
+    Animator animator;
+
     private void Start()
     {
         forward = Camera.main.transform.forward;
         forward.y = 0;
         forward = Vector3.Normalize(forward);
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
+
+        animator = wizard.GetComponent<Animator>();
     }
 
     private void Update()
     {
-        if (Input.anyKey)
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
             Move();
+            animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
         }
     }
 

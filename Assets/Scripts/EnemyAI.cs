@@ -7,6 +7,9 @@ public class EnemyAI : MonoBehaviour
 {
     public NavMeshAgent agent;
 
+    public GameObject ork;
+    Animator animator;
+
     public Transform player;
 
     public LayerMask whatIsGround, whatIsPlayer;
@@ -35,6 +38,7 @@ public class EnemyAI : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        animator = ork.GetComponent<Animator>();
     }
 
     private void Update()
@@ -47,7 +51,14 @@ public class EnemyAI : MonoBehaviour
         {
             stunTimer -= Time.deltaTime;
             agent.SetDestination(transform.position);
+            animator.SetBool("isStunned", true);
+            animator.SetBool("isRunning", false);
             return;
+        }
+        else
+        {
+            animator.SetBool("isRunning", true);
+            animator.SetBool("isStunned", false);
         }
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
@@ -62,7 +73,11 @@ public class EnemyAI : MonoBehaviour
     {
         if (!walkPointSet) SearchWalkPoint();
 
-        if (walkPointSet) agent.SetDestination(walkPoint);
+        if (walkPointSet)
+        {
+            agent.SetDestination(walkPoint);
+            animator.SetBool("isRunning", true);
+        }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
@@ -72,6 +87,7 @@ public class EnemyAI : MonoBehaviour
             if (waitTimer > 0)
             {
                 waitTimer -= Time.deltaTime;
+                animator.SetBool("isRunning", false);
                 return;
             }
             waitTimer += waitLength;
@@ -92,6 +108,7 @@ public class EnemyAI : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
+        animator.SetBool("isRunning", true);
     }
     private void AttackPlayer()
     {
@@ -117,7 +134,8 @@ public class EnemyAI : MonoBehaviour
                     }
                 }
             }
-
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isAttacking", true);
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
@@ -125,6 +143,8 @@ public class EnemyAI : MonoBehaviour
 
     private void ResetAttack()
     {
-       alreadyAttacked = false;
+        alreadyAttacked = false;
+        animator.SetBool("isAttacking", false);
+        animator.SetBool("isRunning", true);
     }
 }
