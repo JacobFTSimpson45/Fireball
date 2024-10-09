@@ -10,6 +10,8 @@ public class PlayerAbilityStun : MonoBehaviour
     public GameObject wizard;
     Animator animator;
 
+    public GameObject decalProjector;
+
     private void Start()
     {
         animator = wizard.GetComponent<Animator>();
@@ -20,10 +22,12 @@ public class PlayerAbilityStun : MonoBehaviour
         {
             DetectEnemy();
             animator.SetBool("isStunning", true);
+            decalProjector.gameObject.SetActive(true);
         }
         else
         {
             animator.SetBool("isStunning", false);
+            decalProjector.gameObject.SetActive(false);
         }
     }
     private void DetectEnemy()
