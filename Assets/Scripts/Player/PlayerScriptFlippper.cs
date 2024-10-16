@@ -35,7 +35,7 @@ public class PlayerScriptFlippper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0) && PauseMenu.gameIsPaused == false)
         {
             playerShoot.ChargeFireball();
 
@@ -47,7 +47,7 @@ public class PlayerScriptFlippper : MonoBehaviour
             playerAbilityStun.enabled = false;
 
         }
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetKeyUp(KeyCode.Mouse0) && PauseMenu.gameIsPaused == false)
         {
             playerShoot.ShootFireball();
 

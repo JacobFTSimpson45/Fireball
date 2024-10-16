@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,11 +10,15 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    public void ChangeSceneByName (string name)
+    public void ChangeSceneByName(string name)
     {
         if (name != null)
         {
             SceneManager.LoadScene(name);
         }
+    }
+    public void PauseGame()
+    {
+        
     }
 }

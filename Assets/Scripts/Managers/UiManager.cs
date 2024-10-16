@@ -6,6 +6,7 @@ using System;
 public class UiManager : MonoBehaviour
 {
     [SerializeField] GameObject deathPanel;
+    [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject player;
     public TextMeshProUGUI timerUIText;
     public TextMeshProUGUI scoreUIText;
@@ -14,6 +15,7 @@ public class UiManager : MonoBehaviour
     private void Start()
     {
         deathPanel.SetActive(false);
+        pausePanel.SetActive(false);
     }
     void Update()
     {

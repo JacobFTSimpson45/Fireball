@@ -12,6 +12,8 @@ public class PlayerAbilityStun : MonoBehaviour
 
     public GameObject decalProjector;
 
+    public AudioClip stunSoundClip;
+
     private void Start()
     {
         animator = wizard.GetComponent<Animator>();
@@ -20,6 +22,7 @@ public class PlayerAbilityStun : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
+            SFXManager.instance.PlaySFXClip(stunSoundClip, transform, 1f);
             DetectEnemy();
             animator.SetBool("isStunning", true);
             decalProjector.gameObject.SetActive(true);

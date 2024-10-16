@@ -10,6 +10,8 @@ public class Fireball : MonoBehaviour
     public float force = 200f;
     public int damage = 1;
 
+    public AudioClip explosionSoundClip;
+
     public void CastFireball()
     {
         //give a force to our Projectile;
@@ -28,7 +30,7 @@ public class Fireball : MonoBehaviour
                 hp.health -= damage;
             }
         }
-
+        SFXManager.instance.PlaySFXClip(explosionSoundClip, transform, 1f);
         Destroy(gameObject);
     }
 }

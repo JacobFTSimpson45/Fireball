@@ -167,6 +167,7 @@ MonoBehaviour:
   agent: {fileID: 8374775818227667478}
   ork: {fileID: 5036925962134579564}
   player: {fileID: 0}
+  hitSoundClip: {fileID: 8300000, guid: 8ef5ead92cc6f4d46879813c7edbe0f6, type: 3}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
@@ -373,6 +374,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6686141412670920084}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 79e2d46cfe1c93e4dba6684e9b26935e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6753493069396283119}
   m_SourcePrefab: {fileID: 100100000, guid: 79e2d46cfe1c93e4dba6684e9b26935e, type: 3}
 --- !u!4 &933783324487194464 stripped
 Transform:
@@ -407,6 +412,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6753493069396283119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5036925962134579564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e989d6f286d29c046bba66264c78b331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footStepSoundClip: {fileID: 8300000, guid: 629e5818f61e3214e86aa804361dd19e, type: 3}
 --- !u!4 &5669207113902666710 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 79e2d46cfe1c93e4dba6684e9b26935e,

@@ -8,6 +8,8 @@ public class PlayerDash : MonoBehaviour
     public float dashTime;
     bool canDash;
 
+    public AudioClip dashSoundClip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,7 @@ public class PlayerDash : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
+            SFXManager.instance.PlaySFXClip(dashSoundClip, transform, 1f);
             StartCoroutine(Dash());
         }
     }

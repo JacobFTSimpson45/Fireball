@@ -12,6 +12,8 @@ public class EnemyAI : MonoBehaviour
 
     public Transform player;
 
+    public AudioClip hitSoundClip;
+
     public LayerMask whatIsGround, whatIsPlayer;
 
     //patroling
@@ -134,6 +136,7 @@ public class EnemyAI : MonoBehaviour
                     }
                 }
             }
+            SFXManager.instance.PlaySFXClip(hitSoundClip, transform, 1f);
             animator.SetBool("isRunning", false);
             animator.SetBool("isAttacking", true);
             alreadyAttacked = true;
